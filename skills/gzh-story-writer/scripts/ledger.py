@@ -239,7 +239,7 @@ def save_ledger(ledger_path, records):
 def cmd_init(args):
     account = args['_'][1] if len(args['_']) > 1 else None
     if not account:
-        sys.stderr.write('❌ 请提供账号简称，如: python3 scripts/ledger.py init 小满\n')
+        sys.stderr.write('❌ 请提供账号名称，如: python3 scripts/ledger.py init 小满\n')
         sys.exit(1)
     ledger_path = get_ledger_path(account, args.get('workspace', UNDEFINED))
     if os.path.exists(ledger_path):
@@ -252,7 +252,7 @@ def cmd_init(args):
 def cmd_check(args):
     account = args['_'][1] if len(args['_']) > 1 else None
     if not account:
-        sys.stderr.write('❌ 请提供账号简称，如: python3 scripts/ledger.py check 小满\n')
+        sys.stderr.write('❌ 请提供账号名称，如: python3 scripts/ledger.py check 小满\n')
         sys.exit(1)
     ledger_path = get_ledger_path(account, args.get('workspace', UNDEFINED))
     records = load_ledger(ledger_path)
@@ -355,7 +355,7 @@ def _pick(pool, fallback):
 def cmd_suggest(args):
     account = args['_'][1] if len(args['_']) > 1 else None
     if not account:
-        sys.stderr.write('❌ 请提供账号简称，如: python3 scripts/ledger.py suggest 小满\n')
+        sys.stderr.write('❌ 请提供账号名称，如: python3 scripts/ledger.py suggest 小满\n')
         sys.exit(1)
     ledger_path = get_ledger_path(account, args.get('workspace', UNDEFINED))
     records = load_ledger(ledger_path)
@@ -391,7 +391,7 @@ def cmd_log(args):
     account = args['_'][1] if len(args['_']) > 1 else None
     if not account or not js_truthy(args.get('title', UNDEFINED)) or not js_truthy(args.get('hook', UNDEFINED)):
         sys.stderr.write(
-            '❌ 参数不足。用法: python3 scripts/ledger.py log <账号> --title "<标题>" '
+            '❌ 参数不足。用法: python3 scripts/ledger.py log <账号名称> --title "<标题>" '
             '--hook "<钩子形态>" [--choices N] [--opening "..."] [--names "..."]\n')
         sys.exit(1)
     ledger_path = get_ledger_path(account, args.get('workspace', UNDEFINED))
@@ -435,7 +435,7 @@ def cmd_log(args):
 def cmd_report(args):
     account = args['_'][1] if len(args['_']) > 1 else None
     if not account:
-        sys.stderr.write('❌ 请提供账号简称，如: python3 scripts/ledger.py report 小满\n')
+        sys.stderr.write('❌ 请提供账号名称，如: python3 scripts/ledger.py report 小满\n')
         sys.exit(1)
     ledger_path = get_ledger_path(account, args.get('workspace', UNDEFINED))
     records = load_ledger(ledger_path)
@@ -505,7 +505,7 @@ def cmd_report(args):
 def cmd_export(args):
     account = args['_'][1] if len(args['_']) > 1 else None
     if not account:
-        sys.stderr.write('❌ 请提供账号简称，如: python3 scripts/ledger.py export 小满\n')
+        sys.stderr.write('❌ 请提供账号名称，如: python3 scripts/ledger.py export 小满\n')
         sys.exit(1)
     ledger_path = get_ledger_path(account, args.get('workspace', UNDEFINED))
     records = load_ledger(ledger_path)
@@ -554,12 +554,12 @@ USAGE = """
 用法: python3 scripts/ledger.py <子命令> [参数]
 
 子命令:
-  init <账号>           初始化台账 (ledger_<账号>.json)
-  check <账号>          检查最近5篇冷却与禁用项
-  suggest <账号>        推荐本篇选择数、钩子形态与结构
-  log <账号> [选项]     追加成稿记录
-  report <账号>         分析历史分布与违规检测
-  export <账号> [选项]  导出为 Markdown 表格
+  init <账号名称>           初始化台账 (ledger_<账号>.json)
+  check <账号名称>          检查最近5篇冷却与禁用项
+  suggest <账号名称>        推荐本篇选择数、钩子形态与结构
+  log <账号名称> [选项]     追加成稿记录
+  report <账号名称>         分析历史分布与违规检测
+  export <账号名称> [选项]  导出为 Markdown 表格
 
 选项:
   --workspace <路径>    指定工作目录

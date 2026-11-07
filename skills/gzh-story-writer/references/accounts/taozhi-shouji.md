@@ -41,6 +41,7 @@
 - 配色：奶油白纸面 + 炭黑墨线 + 柿子橙点染≤5%，暖调无冷蓝灰底
 - 纪律：宗教意象零出现；留白≥40%；单篇单风格；人物保持尊严
 - 生图提示词内严禁出现风格编号，一律用自然语言风格名
+- **韬知锚点图**：内置于技能 `assets/anchors/taozhi-shouji/taozhi.png`；提示词参考：`assets/anchors/taozhi-shouji/taozhi-prompt.txt`)
 
 **文末固定引导语**：
 

@@ -1,13 +1,3 @@
----
-name: hook-craft
-version: 1.1
-author: chenty
-license: MIT
-tags: [writing, gzh, structure, hook]
-related_skills: [gzh-story-writer, viral-skeleton]
-description: 结构级防套路资产。当稿件被评价"看多了像套路"、或动笔前需要轮换文章骨架与信息释放顺序时读。
----
-
 # 钩子与结构轮换（hook-craft）
 
 ## When to Use

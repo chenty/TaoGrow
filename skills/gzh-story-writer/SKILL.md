@@ -1,10 +1,10 @@
 ---
 name: gzh-story-writer
-description: 将真实口述、聊天记录和零散素材整理为公众号故事与情感文章，创作全程完成隐私脱敏；支持公开视频（如 YouTube）素材的海外乡村纪实类文章，走公开素材规范（核实事实、不改地点与数字、版权与肖像处理）；支持多账号风格配置、真实素材整理、隐私与名誉风险处理。当用户要为公众号创作人间故事或情感类文章、把口述转写或聊天记录整理成文、素材涉及真实人物需要做身份剥离与事件脱敏、建立某账号写作规范与栏目体系，或需要发布前自检、跨篇防撞车台账登记时使用。
+description: 将真实口述、聊天记录、零散素材或公开纪实视频整理为微信公众号人间故事与情感文章，全程严格执行隐私脱敏（5步法）或公开素材核验规范；支持多账号矩阵配置、六本账落点校验、跨篇防撞车台账（ledger）、发布前自检与封面图生成。当用户要写公众号故事、情感分析、口述改写、读者来信回信、海外纪实、建立账号写作规范或防撞车登记时使用。
 metadata:
   display_name: 公众号人间故事写作
   category: writing
-  version: 2.4.0
+  version: 2.4.1
   author: 韬知
 ---
 
@@ -28,12 +28,12 @@ metadata:
 |---|---|
 | 账号已存在 | 读 `references/accounts/<slug>.md`，向用户确认一次"这次用 X 号，Y 人设，Z 字数"即可开工 |
 | 用户未指明账号 | 把索引里的账号列给用户选，**不要自己猜** |
-| 账号不存在 | 读 `references/account-template.md` 采集 8 项参数建档，在 `references/accounts/` 新建文件并在索引追加一行 |
+| 账号不存在 | 读 `references/account-template.md` 采集 10 项参数建档，在 `references/accounts/` 新建文件并在索引追加一行 |
 
 > ⚠️ **只读选中账号那一个文件**。其余账号档案不要读——那是纯浪费。
 
-**8 项参数**：账号名 / 人格昵称 / 人设 / 调性关键词 / 读者画像 / 常设栏目 / 字数区间 / 禁忌＋固定引导语。
-**配图任务**：视觉小节若指向细则文件，出图前必须先读。
+**10 项参数**：账号名 / 人格昵称 / 人设 / 调性关键词 / 读者画像 / 内容主线与常设栏目 / 字数区间 / 禁忌＋固定引导语 / 冷启动约束 / 口吻分版归属（定义见 `account-template.md`）。
+**配图任务**：视觉小节若指向细则文件，出图前必须先读；各账号 IP 锚点图已内置于技能 `assets/anchors/<slug>/` 目录。
 
 ### 步骤 1：确认素材与体裁
 
@@ -53,7 +53,7 @@ metadata:
 **文字原创 ≠ 安全**：情节撞车不构成侵权，但会伤"真实故事"人设——读者大概率刷到过同款爽文。
 确认同题则**错开爽文节拍**：去具体金额（"一笔整钱"不写数字）／不把对方写成恶人／砍掉暴富逆袭爽点换更小的真实动作／不给"恶人悔恨崩溃"的反转尾巴。
 
-**定栏目与字数**：用户指定优先，否则用账号默认。按栏目取体裁片段（A `a-real-story` / B `b-hot-topic` / C `c-money-choice` / D `d-reader-letter`，见 `references/fragments/`）。
+**定栏目与字数**：用户指定优先，否则用账号默认。按栏目取体裁片段（A `a-real-story` / B `b-hot-topic` / C `c-money-choice` / D `d-reader-letter` / E `e-overseas-life` / F `f-contrast-observation`，见 `references/fragments/`；公开视频素材通常对应 E 或 F）。
 
 **特殊体例**：开号宣言、周年文、号主自述等"非栏目文"套用 **A 体裁骨架**（场景钩子 → 身份交代 → 为什么做这件事 → 规矩/承诺 → 收束），落点仍是"你处在这个处境会怎么想"，叙事人＝号主本人；自我披露同样受"暴露处境类型、不暴露可指认细节"约束。
 
@@ -133,7 +133,7 @@ python3 scripts/count_cjk.py <文件路径> --body-start <首行> --body-end <�
 2. 文末按顺序：互动钩子 → 固定引导语（若账号有）→ **话题标签一行** → 5 步法自检
    标签行：1 主 + 1–2 副（≤3），空格分隔，紧接引导语独立成行；**属正文**，与正文、引导语连成一块，一次复制即完整
 3. **提醒用户**：自检发布前删掉；标签行随正文带走
-4. 对照 `references/pre-publish-checklist.md` 过一遍 8+5 项
+4. 对照 `references/pre-publish-checklist.md` 过一遍自检项（核心 8 项 + 防批量 5 项必检；公开视频素材追加 4 项）
 5. 附**摘要**（≤120 字、含目标关键词）＋**配图方案**（插在哪段后／画面／尺寸；画风照账号视觉小节，人物不画正脸）
 6. 封面出**两件套**（2.35:1 大图 ＋ 1:1 缩略图 ＋ 横排合并），字号交脚本算，别手调：
    `python3 scripts/make_cover.py --art <底图> --column <栏目名> --title <4-8字> --subtitle <一句> --outdir out/`
@@ -190,7 +190,7 @@ python3 scripts/count_cjk.py <文件路径> --body-start <首行> --body-end <�
 | `fragments/f-contrast-observation.md` | 体裁 F 对照观察（「隔山对照」） |
 | `cross-post-rules.md` | 步骤 1.6 规则权威版与判例 |
 | `hook-craft.md` | **步骤 1.6 必读**：深层骨架防套路（拓扑轮换 T1–T6、欠债账本自检、节拍器破坏），与 cross-post-rules 叠加，两层都过 |
-| `pre-publish-checklist.md` | 步骤 4 交付前过表（8+3 项） |
+| `pre-publish-checklist.md` | 步骤 4 交付前过表（8+5 项必检，公开素材 8+5+4 项） |
 | `search-traffic.md` | 步骤 4 话题标签与系统搜索词 |
 | `account-template.md` | 新建账号；或查六本账定义 |
 | `enhancements.md` · `viral-skeleton.md` · `psychological-account-topic-hooks.md` | 可选增强（骨架 / 选题卡） |

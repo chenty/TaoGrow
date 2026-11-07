@@ -106,7 +106,7 @@ function saveLedger(ledgerPath, records) {
 function cmdInit(args) {
   const account = args._[1];
   if (!account) {
-    console.error('❌ 请提供账号简称，如: node scripts/ledger.js init 小满');
+    console.error('❌ 请提供账号名称，如: node scripts/ledger.js init 小满');
     process.exit(1);
   }
   const ledgerPath = getLedgerPath(account, args.workspace);
@@ -121,7 +121,7 @@ function cmdInit(args) {
 function cmdCheck(args) {
   const account = args._[1];
   if (!account) {
-    console.error('❌ 请提供账号简称，如: node scripts/ledger.js check 小满');
+    console.error('❌ 请提供账号名称，如: node scripts/ledger.js check 小满');
     process.exit(1);
   }
   const ledgerPath = getLedgerPath(account, args.workspace);
@@ -221,7 +221,7 @@ function cmdCheck(args) {
 function cmdSuggest(args) {
   const account = args._[1];
   if (!account) {
-    console.error('❌ 请提供账号简称，如: node scripts/ledger.js suggest 小满');
+    console.error('❌ 请提供账号名称，如: node scripts/ledger.js suggest 小满');
     process.exit(1);
   }
   const ledgerPath = getLedgerPath(account, args.workspace);
@@ -256,7 +256,7 @@ function cmdSuggest(args) {
 function cmdLog(args) {
   const account = args._[1];
   if (!account || !args.title || !args.hook) {
-    console.error('❌ 参数不足。用法: node scripts/ledger.js log <账号> --title "<标题>" --hook "<钩子形态>" [--choices N] [--opening "..."] [--names "..."]');
+    console.error('❌ 参数不足。用法: node scripts/ledger.js log <账号名称> --title "<标题>" --hook "<钩子形态>" [--choices N] [--opening "..."] [--names "..."]');
     process.exit(1);
   }
   const ledgerPath = getLedgerPath(account, args.workspace);
@@ -294,7 +294,7 @@ function cmdLog(args) {
 function cmdReport(args) {
   const account = args._[1];
   if (!account) {
-    console.error('❌ 请提供账号简称，如: node scripts/ledger.js report 小满');
+    console.error('❌ 请提供账号名称，如: node scripts/ledger.js report 小满');
     process.exit(1);
   }
   const ledgerPath = getLedgerPath(account, args.workspace);
@@ -363,7 +363,7 @@ function cmdReport(args) {
 function cmdExport(args) {
   const account = args._[1];
   if (!account) {
-    console.error('❌ 请提供账号简称，如: node scripts/ledger.js export 小满');
+    console.error('❌ 请提供账号名称，如: node scripts/ledger.js export 小满');
     process.exit(1);
   }
   const ledgerPath = getLedgerPath(account, args.workspace);
@@ -405,12 +405,12 @@ function main() {
 用法: node scripts/ledger.js <子命令> [参数]
 
 子命令:
-  init <账号>           初始化台账 (ledger_<账号>.json)
-  check <账号>          检查最近5篇冷却与禁用项
-  suggest <账号>        推荐本篇选择数、钩子形态与结构
-  log <账号> [选项]     追加成稿记录
-  report <账号>         分析历史分布与违规检测
-  export <账号> [选项]  导出为 Markdown 表格
+  init <账号名称>           初始化台账 (ledger_<账号>.json)
+  check <账号名称>          检查最近5篇冷却与禁用项
+  suggest <账号名称>        推荐本篇选择数、钩子形态与结构
+  log <账号名称> [选项]     追加成稿记录
+  report <账号名称>         分析历史分布与违规检测
+  export <账号名称> [选项]  导出为 Markdown 表格
 
 选项:
   --workspace <路径>    指定工作目录
