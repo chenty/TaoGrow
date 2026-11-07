@@ -193,10 +193,7 @@ function cmdCheck(args) {
   console.log(`   🚫 本篇禁用上一篇同款形态: ${lastHook || '无'}`);
   console.log(`   ✅ 本篇可用形态: ${JSON.stringify(allowedHooks)}`);
 
-  const numHooks = recent5.filter(r => (r.hook_type || '').includes('数字')).length;
-  if (numHooks >= 3) {
-    console.log(`   ⚠️ 警惕：最近 5 篇有 ${numHooks} 篇使用数字选项！本篇建议强制切换为 AB二选一、开放式填空或一句话留言！`);
-  }
+  // 互动发问轮换正常
 
   // 5. 结构骨架
   const recentStructs = recent5.map(r => (r.structure || '').trim()).filter(Boolean);
