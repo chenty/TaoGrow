@@ -73,8 +73,8 @@ metadata:
 **先跑脚本**（本脚本仅提供 Node 版；环境无 node 时按下方 6 条参数人工核对）：
 
 ```bash
-node scripts/ledger.js check <账号简称>     # 无 node 时用 python3 scripts/ledger.py
-node scripts/ledger.js suggest <账号简称>
+node scripts/ledger.js check <账号名称>     # 无 node 时用 python3 scripts/ledger.py
+node scripts/ledger.js suggest <账号名称>
 ```
 
 对照输出定下 **5 个参数**，违反禁用项绝不动笔：
@@ -91,7 +91,7 @@ node scripts/ledger.js suggest <账号简称>
 | 4 | 结构骨架 | 最近连续用过的换掉（纯对话体/时间线/一封回信/第一人称/清单反转） |
 | 5 | 金句与加粗 | 对仗判断句每篇**最多 1 句**；加粗位置漂移，允许某篇 0–1 处 |
 
-> 完整规则与判例见 `cross-post-rules.md`；首写新账号时脚本自动创建 `ledger_<账号简称>.json`。
+> 完整规则与判例见 `cross-post-rules.md`；首写新账号时脚本自动创建 `ledger_<账号名称>.json`。
 
 **结尾互动钩子五形态**（每篇必带，与上篇不同）：① 数字选项　② AB 二选一　③ 字母选项　④ 开放式填空　⑤ 一句话留言。各形态示范见 `references/cross-post-rules.md` 第五节。
 
@@ -123,9 +123,9 @@ python3 scripts/count_cjk.py <文件路径> --body-start <首行> --body-end <�
 
 ### 步骤 4：交付
 
-1. 写入 `<账号简称>_<题材>_<字数区间>.md`；**台账回填（不可遗漏）**：
+1. 写入 `<账号名称>_<题材>_<字数区间>.md`；**台账回填（不可遗漏）**：
    ```bash
-   node scripts/ledger.js log <账号简称> --title "标题" --hook "② AB 二选一" \
+   node scripts/ledger.js log <账号名称> --title "标题" --hook "② AB 二选一" \
      --choices 3 --opening "开头前1-2句" --opening-style "物件开场" \
      --names "表姐夫,师傅" --structure "时间线推进" --bold-count 2 \
      --antithesis-count 1 --words 1180 --tags "#中年女人的钱,#婆婆的账"

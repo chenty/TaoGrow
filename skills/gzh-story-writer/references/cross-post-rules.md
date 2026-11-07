@@ -3,7 +3,7 @@
 > **本文件是"选择数 / 金句限频 / 开头冷却 / 去老X化 / 钩子轮换 / 结构轮换"六项规则的唯一权威定义。**
 > 其他文件一律只引用、不重述。步骤 1.6 发现违规迹象时读本文件。
 >
-> 分工：本文件管"规则与判例"；逐篇状态维护在工作目录的 `ledger_<账号简称>.json`。
+> 分工：本文件管"规则与判例"；逐篇状态维护在工作目录的 `台账_<账号名称>.json`。
 
 单篇看都合格、连读却像同一个人押韵——这是比"单篇 AI 味"更隐蔽的批量痕迹。两层都要防：
 
@@ -58,13 +58,13 @@
 
 ```bash
 # Node 版把 node 换成 python3 即为 Python 版
-node scripts/ledger.js check   <账号简称>   # 动笔前：查禁用清单与冷却状态
-node scripts/ledger.js suggest <账号简称>   # 动笔前：推荐选择数/钩子形态/结构
-node scripts/ledger.js log     <账号简称> --title "" --hook "" --choices N \
+node scripts/ledger.js check   <账号名称>   # 动笔前：查禁用清单与冷却状态
+node scripts/ledger.js suggest <账号名称>   # 动笔前：推荐选择数/钩子形态/结构
+node scripts/ledger.js log     <账号名称> --title "" --hook "" --choices N \
      --opening "" --opening-style "" --names "" --structure "" \
      --bold-count N --antithesis-count N --words N --tags ""
-node scripts/ledger.js report  <账号简称>   # 分析分布 + 自检相邻重复违规
-node scripts/ledger.js export  <账号简称>   # 导出 Markdown 台账供人工查看
+node scripts/ledger.js report  <账号名称>   # 分析分布 + 自检相邻重复违规
+node scripts/ledger.js export  <账号名称>   # 导出 Markdown 台账供人工查看
 ```
 
 **log 的必填参数**对应上面纪律：`--names`（人物称呼）、`--choices`（选择数）、`--hook`（钩子形态）、`--structure`（结构骨架）、`--antithesis-count` + `--bold-count`（金句与加粗）；`--opening` 可选，仅记录不参与校验。
